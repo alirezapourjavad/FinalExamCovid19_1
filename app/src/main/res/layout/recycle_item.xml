@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#9FA8DA">
+
+        <TextView
+            android:id="@+id/tv_country"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="iran" />
+
+        <TextView
+            android:id="@+id/tv_total_confirmed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:text="TotalConfirmed ="
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_total_deaths"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_total_deaths"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="TotalDeaths ="
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_total_recovered"
+            app:layout_constraintEnd_toEndOf="@+id/tv_total_confirmed"
+            app:layout_constraintStart_toStartOf="@+id/tv_total_confirmed"
+            app:layout_constraintTop_toBottomOf="@+id/tv_total_confirmed" />
+
+        <TextView
+            android:id="@+id/tv_total_recovered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="TotalRecovered ="
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_total_deaths"
+            app:layout_constraintStart_toStartOf="@+id/tv_total_deaths"
+            app:layout_constraintTop_toBottomOf="@+id/tv_total_deaths" />
+
+        <TextView
+            android:id="@+id/tv_num_total_confirmed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="#FFEA00"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tv_num_total_deaths"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_num_total_deaths"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1245" />
+
+        <TextView
+            android:id="@+id/tv_num_total_deaths"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:textColor="#FF1744"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tv_num_total_recovered"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/tv_num_total_recovered"
+            app:layout_constraintTop_toBottomOf="@+id/tv_num_total_confirmed"
+            tools:text="1245" />
+
+        <TextView
+            android:id="@+id/tv_num_total_recovered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="#76FF03"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_total_recovered"
+            app:layout_constraintTop_toBottomOf="@+id/tv_num_total_deaths"
+            tools:text="1245" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
