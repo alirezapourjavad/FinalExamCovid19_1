@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.finalexamcovid19.databinding.FragmentHomeBinding
 import com.example.finalexamcovid19.dbModel.Country
+import com.example.finalexamcovid19.dbModel.Global
 import java.util.*
 
 
@@ -17,7 +18,13 @@ class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
     lateinit var viewModel: HomeViewModel
     var adapter =
-        HomeAdapter() { findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(it.iD)) }
+        HomeAdapter() {
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToDetailFragment(
+                    it.iD
+                )
+            )
+        }
 
 
     override fun onCreateView(
@@ -26,7 +33,7 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater)
-        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
@@ -34,11 +41,17 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.mainData.observe(viewLifecycleOwner) {
+            setAdapter(it.countries)
+        }
+        viewModel.mainData.observe(viewLifecycleOwner){
+            it.global?.let { it1 -> setItem(it1) }
+        }
+        viewModel.mainData.observe(viewLifecycleOwner){
+            binding.tvDate.text = it.date.toString()
+        }
 
 
-        adapter.submitList(viewModel.response?.countries)
-        binding.rvHome.adapter = adapter
-        setItem()
 
 
         binding.btnName.setOnClickListener {
@@ -50,7 +63,7 @@ class HomeFragment : Fragment() {
             adapter.notifyDataSetChanged()
         }
         binding.btnDeath.setOnClickListener {
-            viewModel.response?.countries?.sortedBy { it.totalDeaths }?.let { it1 ->
+            viewModel.response?.countries?.sortedByDescending { it.totalDeaths }?.let { it1 ->
                 sortByDeaths(
                     it1
                 )
@@ -58,7 +71,7 @@ class HomeFragment : Fragment() {
             adapter.notifyDataSetChanged()
         }
         binding.btnCase.setOnClickListener {
-            viewModel.response?.countries?.sortedBy { it.totalConfirmed }?.let { it1 ->
+            viewModel.response?.countries?.sortedByDescending { it.totalConfirmed }?.let { it1 ->
                 sortByCase(
                     it1
                 )
@@ -70,33 +83,23 @@ class HomeFragment : Fragment() {
             val wordList = viewModel.searchWord(it.toString())
             setSearchAdapter(wordList)
 
-
-//            binding.btnCase.setOnClickListener {
-//                viewModel.sortByCase(wordList)
-//
-//            }
-//            binding.btnDeath.setOnClickListener {
-//                viewModel.sortByDeaths(wordList)
-//
-//            }
-//            binding.btnName.setOnClickListener {
-//                viewModel.sortByCountries(wordList)
-//
-//            }
             adapter.notifyDataSetChanged()
         }
 
         binding.icRefresh.setOnClickListener {
-            viewModel.refresh()
-            setItem()
-        }
+            viewModel.refresh() }
 
     }
 
-    fun setItem() {
-        binding.tvGlobalTotalDeaths.text = viewModel.response?.global?.totalDeaths.toString()
-        binding.tvNumGlobalConfirmed.text = viewModel.response?.global?.totalConfirmed.toString()
-        binding.tvDate.text = viewModel.response?.date.toString()
+    private fun setAdapter(it: List<Country>?) {
+        adapter.submitList(it)
+        binding.rvHome.adapter = adapter
+    }
+
+    fun setItem(it:Global) {
+        binding.tvGlobalTotalDeaths.text = it.totalDeaths.toString()
+        binding.tvNumGlobalConfirmed.text = it.totalConfirmed.toString()
+
     }
 
     fun setSearchAdapter(wordList: MutableList<Country>) {

@@ -1,22 +1,28 @@
 package com.example.finalexamcovid19.home
 
 import android.app.Application
-import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.finalexamcovid19.dbModel.Country
+import com.example.finalexamcovid19.dbModel.Global
 import com.example.finalexamcovid19.dbModel.Summary
 import com.example.finalexamcovid19.network.ApiClient
 import com.example.finalexamcovid19.network.ApiRepository
-import com.example.finalexamcovid19.network.ApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class HomeViewModel(appContext: Application) : AndroidViewModel(appContext) {
     var response: Summary? = null
-//    lateinit var countryList: List<Country>
+
+    private var _mainData = MutableLiveData<Summary>()
+    val mainData: LiveData<Summary>
+        get() = _mainData
+
+
+    //    lateinit var countryList: List<Country>
     private val TAG = "HomeViewModel"
 
     init {
@@ -32,8 +38,7 @@ class HomeViewModel(appContext: Application) : AndroidViewModel(appContext) {
             override fun onResponse(call: Call<Summary>, response: Response<Summary>) {
                 this@HomeViewModel.response = response.body()
                 Log.i(TAG, "onResponse:  ")
-
-//                 countryList = response.body()?.countries!!
+                _mainData.value = response.body()
             }
 
             override fun onFailure(call: Call<Summary>, t: Throwable) {
@@ -56,23 +61,6 @@ class HomeViewModel(appContext: Application) : AndroidViewModel(appContext) {
         }
         return worldList
     }
-//
-//    fun setSearchAdapter(wordList :MutableList<Country>){
-//        adapter.submitList(wordList)
-//    }
-//
-//    fun  sortByDeaths (list:List<Country>){
-//         adapter.submitList(list)
-//    }
-//
-//    fun sortByCountries (list:List<Country>){
-//        adapter.submitList(list)
-//    }
-//
-//    fun sortByCase (list:List<Country>){
-//        adapter.submitList(list)
-//    }
-
 }
 
 

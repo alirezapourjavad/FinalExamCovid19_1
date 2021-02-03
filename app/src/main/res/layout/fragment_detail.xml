@@ -11,17 +11,18 @@
         android:id="@+id/ic_back"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFCCBC"
+        android:background="#FFECB3"
         tools:context=".DetailFragment">
 
         <TextView
             android:id="@+id/tv_country_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,10 +32,11 @@
             android:id="@+id/tv_nconfirmed_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="60dp"
             android:text="newConfirmed ="
             android:textColor="@color/black"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_country_detail" />
 
@@ -42,10 +44,12 @@
             android:id="@+id/tv_ndeaths_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:text="newDeaths ="
+            android:textAlignment="viewStart"
             android:textColor="@color/black"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_nconfirmed_detail" />
 
@@ -53,10 +57,11 @@
             android:id="@+id/tv_nrecovered_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:text="newRecovered ="
             android:textColor="@color/black"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_ndeaths_detail" />
 
@@ -64,12 +69,13 @@
             android:id="@+id/tv_tconfirmed_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
             android:text="totalConfirmed ="
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_num_tconfrmed_detail"
-            app:layout_constraintEnd_toStartOf="@+id/tv_num_tconfrmed_detail"
-            app:layout_constraintTop_toTopOf="@+id/tv_num_tconfrmed_detail" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nrecovered_detail" />
 
         <TextView
             android:id="@+id/tv_tdeaths_detail"
@@ -78,6 +84,7 @@
             android:layout_marginTop="32dp"
             android:text="totalDeaths ="
             android:textColor="@color/black"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tv_tconfirmed_detail"
             app:layout_constraintTop_toBottomOf="@+id/tv_tconfirmed_detail" />
 
@@ -88,6 +95,7 @@
             android:layout_marginTop="32dp"
             android:text="totalRecovered ="
             android:textColor="@color/black"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tv_tdeaths_detail"
             app:layout_constraintTop_toBottomOf="@+id/tv_tdeaths_detail" />
 
@@ -95,37 +103,39 @@
             android:id="@+id/tv_num_tconfrmed_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
             android:text="TextView"
             android:textColor="#FFA000"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_country_detail" />
-
-        <TextView
-            android:id="@+id/tv_num_tdeats_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:text="TextView"
-            android:textColor="#D32F2F"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_num_tconfrmed_detail" />
+            app:layout_constraintStart_toEndOf="@+id/tv_tconfirmed_detail"
+            app:layout_constraintTop_toBottomOf="@+id/tv_num_nrecovered_detail" />
 
         <TextView
             android:id="@+id/tv_num_trecovered_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
             android:text="TextView"
             android:textColor="#388E3C"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_num_tdeats_detail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_num_tdeats_detail"
             app:layout_constraintTop_toBottomOf="@+id/tv_num_tdeats_detail" />
+
+        <TextView
+            android:id="@+id/tv_num_tdeats_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="TextView"
+            android:textColor="#D32F2F"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tv_num_tconfrmed_detail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_num_tconfrmed_detail"
+            app:layout_constraintTop_toBottomOf="@+id/tv_num_tconfrmed_detail" />
 
         <TextView
             android:id="@+id/tv_num_nconfirmed_detai"

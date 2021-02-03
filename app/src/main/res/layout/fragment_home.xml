@@ -10,25 +10,28 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DCEDC8">
+        android:background="#FFECB3">
 
         <EditText
             android:id="@+id/et_search"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:background="@drawable/search_shape"
             android:ems="10"
             android:hint="search"
             android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingEnd="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_name"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_shape"
             android:text="sort by name"
@@ -40,9 +43,9 @@
             app:layout_constraintStart_toEndOf="@+id/btn_case"
             app:layout_constraintTop_toTopOf="@+id/btn_case" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_case"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_shape"
             android:text="sort by case"
@@ -54,9 +57,9 @@
             app:layout_constraintStart_toEndOf="@+id/btn_death"
             app:layout_constraintTop_toTopOf="@+id/btn_death" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_death"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/button_shape"

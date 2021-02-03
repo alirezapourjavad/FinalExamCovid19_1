@@ -15,6 +15,7 @@ import com.example.finalexamcovid19.home.HomeViewModel
 class DetailFragment : Fragment() {
     lateinit var binding: FragmentDetailBinding
     lateinit var homeViewModel: HomeViewModel
+    lateinit var countries: List<Country>
     lateinit var item: Country
 
     override fun onCreateView(
@@ -23,7 +24,7 @@ class DetailFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentDetailBinding.inflate(inflater)
-        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
@@ -31,31 +32,30 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val country: List<Country>? = homeViewModel.response?.countries
-
-        val countryId = DetailFragmentArgs.fromBundle(requireArguments()).countryId
-
-        if (country != null) {
-            for (data in country) {
-                if (countryId == data.iD) {
-                    item = data
-                    binding.tvCountryDetail.text = item.country
-                    binding.tvDateDetail.text = item.date.toString()
-                    binding.tvNconfirmedDetail.text = item.newConfirmed.toString()
-                    binding.tvNumTconfrmedDetail.text = item.totalConfirmed.toString()
-                    binding.tvNdeathsDetail.text = item.newDeaths.toString()
-                    binding.tvNumTdeatsDetail.text = item.totalDeaths.toString()
-                    binding.tvNumNrecoveredDetail.text = item.newRecovered.toString()
-                    binding.tvNumTrecoveredDetail.text = item.totalRecovered.toString()
-                }
-            }
+        homeViewModel.mainData.observe(viewLifecycleOwner) {
+            countries = it.countries!!
+            setItem(countries)
         }
-
-
-
 
         binding.icBack.setOnClickListener {
             findNavController().navigateUp()
+        }
+    }
+
+    fun setItem(countries: List<Country>) {
+        val countryId = DetailFragmentArgs.fromBundle(requireArguments()).countryId
+        for (data in countries) {
+            if (countryId == data.iD) {
+                item = data
+                binding.tvCountryDetail.text = item.country
+                binding.tvDateDetail.text = item.date.toString()
+                binding.tvNumNconfirmedDetai.text = item.newConfirmed.toString()
+                binding.tvNumTconfrmedDetail.text = item.totalConfirmed.toString()
+                binding.tvNumNdeaths.text = item.newDeaths.toString()
+                binding.tvNumTdeatsDetail.text = item.totalDeaths.toString()
+                binding.tvNumNrecoveredDetail.text = item.newRecovered.toString()
+                binding.tvNumTrecoveredDetail.text = item.totalRecovered.toString()
+            }
         }
     }
 
