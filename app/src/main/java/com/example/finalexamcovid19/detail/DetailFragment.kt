@@ -4,12 +4,16 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewAnimationUtils
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.finalexamcovid19.R
 import com.example.finalexamcovid19.databinding.FragmentDetailBinding
 import com.example.finalexamcovid19.dbModel.Country
 import com.example.finalexamcovid19.home.HomeViewModel
+import kotlin.math.hypot
 
 
 class DetailFragment : Fragment() {
@@ -32,31 +36,16 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeViewModel.mainData.observe(viewLifecycleOwner) {
-            countries = it.countries!!
-            setItem(countries)
-        }
+        setItem()
 
-        binding.icBack.setOnClickListener {
+        binding.icBack?.setOnClickListener {
             findNavController().navigateUp()
         }
     }
 
-    fun setItem(countries: List<Country>) {
-        val countryId = DetailFragmentArgs.fromBundle(requireArguments()).countryId
-        for (data in countries) {
-            if (countryId == data.iD) {
-                item = data
-                binding.tvCountryDetail.text = item.country
-                binding.tvDateDetail.text = item.date.toString()
-                binding.tvNumNconfirmedDetai.text = item.newConfirmed.toString()
-                binding.tvNumTconfrmedDetail.text = item.totalConfirmed.toString()
-                binding.tvNumNdeaths.text = item.newDeaths.toString()
-                binding.tvNumTdeatsDetail.text = item.totalDeaths.toString()
-                binding.tvNumNrecoveredDetail.text = item.newRecovered.toString()
-                binding.tvNumTrecoveredDetail.text = item.totalRecovered.toString()
-            }
-        }
+    fun setItem() {
+        val country = DetailFragmentArgs.fromBundle(requireArguments()).country
+        binding.viewModel = country
     }
-
 }
+

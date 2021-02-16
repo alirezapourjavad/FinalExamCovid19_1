@@ -3,8 +3,10 @@ package com.example.finalexamcovid19.dbModel
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
-
+@Parcelize
 data class Country(
     @SerializedName("Country")
     val country: String?,
@@ -30,4 +32,4 @@ data class Country(
     val totalDeaths: Int?,
     @SerializedName("TotalRecovered")
     val totalRecovered: Int?
-)
+):Parcelable

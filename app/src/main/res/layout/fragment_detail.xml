@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="viewModel"
+            type="com.example.finalexamcovid19.dbModel.Country" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ic_back"
+        android:id="@+id/cons_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFECB3"
+        android:background="@color/amber_100"
         tools:context=".DetailFragment">
 
         <TextView
@@ -20,7 +23,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:gravity="center"
-            android:text="TextView"
+            tools:text="TextView"
+            android:text="@{viewModel.country}"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -105,7 +109,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:text="TextView"
+            tools:text="TextView"
+            android:text="@{viewModel.totalConfirmed.toString()}"
             android:textColor="#FFA000"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tv_tconfirmed_detail"
@@ -116,7 +121,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="TextView"
+            tools:text="TextView"
+            android:text="@{viewModel.totalRecovered.toString()}"
             android:textColor="#388E3C"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/tv_num_tdeats_detail"
@@ -129,7 +135,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="TextView"
+            tools:text="TextView"
+            android:text="@{viewModel.totalDeaths.toString()}"
             android:textColor="#D32F2F"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/tv_num_tconfrmed_detail"
@@ -142,7 +149,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="TextView"
+            tools:text="TextView"
+            android:text="@{viewModel.newConfirmed.toString()}"
             android:textColor="#FFA000"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_nconfirmed_detail"
@@ -154,7 +162,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="TextView"
+            tools:text="TextView"
+            android:text="@{viewModel.newDeaths.toString()}"
             android:textColor="#D32F2F"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/tv_num_nconfirmed_detai"
@@ -166,7 +175,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="TextView"
+            tools:text="TextView"
+            android:text="@{viewModel.newRecovered.toString()}"
             android:textColor="#388E3C"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/tv_num_ndeaths"
@@ -174,7 +184,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_num_ndeaths" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/ic_back"
             android:layout_width="50dp"
             android:layout_height="49dp"
             android:layout_marginStart="32dp"
@@ -188,7 +198,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="TextView"
+            tools:text="TextView"
+            android:text="@{viewModel.date.toString()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_trecovered_detail" />

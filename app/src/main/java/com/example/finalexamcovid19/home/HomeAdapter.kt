@@ -21,13 +21,9 @@ class HomeAdapter(val itemClick: (country: Country) -> Unit) :
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         val item = currentList[position]
-        holder.binding.tvCountry.text = item.country
-        holder.binding.tvNumTotalConfirmed.text = item.totalConfirmed.toString()
-        holder.binding.tvNumTotalDeaths.text = item.totalDeaths.toString()
-        holder.binding.tvNumTotalRecovered.text = item.totalRecovered.toString()
+        holder.binding.viewModel = item
         holder.itemView.setOnClickListener { itemClick.invoke(item)
         }
-
     }
 }
 

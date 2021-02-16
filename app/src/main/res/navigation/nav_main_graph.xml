@@ -27,8 +27,7 @@
         android:name="com.example.finalexamcovid19.detail.DetailFragment"
         android:label="DetailFragment" >
         <argument
-            android:name="countryId"
-            app:argType="string"
-            app:nullable="true" />
+            android:name="country"
+            app:argType="com.example.finalexamcovid19.dbModel.Country" />
     </fragment>
 </navigation>
