@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.finalexamcovid19.dbModel.Country" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cons_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/amber_100"
+        tools:context=".DetailFragment">
+
+        <TextView
+            android:id="@+id/tv_country_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="@{viewModel.country}"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toEndOf="@+id/ic_back"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/tv_nconfirmed_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="80dp"
+            android:text="newConfirmed ="
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_country_detail" />
+
+        <TextView
+            android:id="@+id/tv_ndeaths_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="newDeaths ="
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nconfirmed_detail" />
+
+        <TextView
+            android:id="@+id/tv_nrecovered_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="newRecovered ="
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ndeaths_detail" />
+
+        <TextView
+            android:id="@+id/tv_tconfirmed_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="totalConfirmed ="
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/tv_num_nconfirmed_detai"
+            app:layout_constraintTop_toTopOf="@+id/tv_num_nconfirmed_detai" />
+
+        <TextView
+            android:id="@+id/tv_tdeaths_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="totalDeaths ="
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_tconfirmed_detail"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tconfirmed_detail" />
+
+        <TextView
+            android:id="@+id/tv_trecovered_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="totalRecovered ="
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_tdeaths_detail"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tdeaths_detail" />
+
+        <TextView
+            android:id="@+id/tv_num_tconfrmed_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="@{viewModel.totalConfirmed.toString()}"
+            android:textColor="#FFA000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/tv_tconfirmed_detail"
+            app:layout_constraintTop_toTopOf="@+id/tv_tconfirmed_detail"
+            tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/tv_num_trecovered_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            tools:text="TextView"
+            android:text="@{viewModel.totalRecovered.toString()}"
+            android:textColor="#388E3C"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tv_num_tdeats_detail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_num_tdeats_detail"
+            app:layout_constraintTop_toBottomOf="@+id/tv_num_tdeats_detail" />
+
+        <TextView
+            android:id="@+id/tv_num_tdeats_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            tools:text="TextView"
+            android:text="@{viewModel.totalDeaths.toString()}"
+            android:textColor="#D32F2F"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tv_num_tconfrmed_detail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_num_tconfrmed_detail"
+            app:layout_constraintTop_toBottomOf="@+id/tv_num_tconfrmed_detail" />
+
+        <TextView
+            android:id="@+id/tv_num_nconfirmed_detai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="@{viewModel.newConfirmed.toString()}"
+            android:textColor="#FFA000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_nconfirmed_detail"
+            app:layout_constraintStart_toEndOf="@+id/tv_nconfirmed_detail"
+            app:layout_constraintTop_toTopOf="@+id/tv_nconfirmed_detail"
+            tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/tv_num_ndeaths"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            tools:text="TextView"
+            android:text="@{viewModel.newDeaths.toString()}"
+            android:textColor="#D32F2F"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tv_num_nconfirmed_detai"
+            app:layout_constraintStart_toStartOf="@+id/tv_num_nconfirmed_detai"
+            app:layout_constraintTop_toBottomOf="@+id/tv_num_nconfirmed_detai" />
+
+        <TextView
+            android:id="@+id/tv_num_nrecovered_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            tools:text="TextView"
+            android:text="@{viewModel.newRecovered.toString()}"
+            android:textColor="#388E3C"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tv_num_ndeaths"
+            app:layout_constraintStart_toStartOf="@+id/tv_num_ndeaths"
+            app:layout_constraintTop_toBottomOf="@+id/tv_num_ndeaths" />
+
+        <ImageView
+            android:id="@+id/ic_back"
+            android:layout_width="50dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_date_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="24dp"
+            android:text="@{viewModel.date.toString()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_trecovered_detail"
+            tools:text="TextView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
